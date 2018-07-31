@@ -1,10 +1,10 @@
 
 
 
- /*! * Product Detail Vue * * 产品详情页(案例) * 
-  
-  * @author songhua * @version 1.0.0 20180727 
-  
+ /*! * Product Detail Vue * * 产品详情页(案例) *
+
+  * @author songhua * @version 1.0.0 20180727
+
   */
 
 <template>
@@ -12,10 +12,10 @@
 		<div>
 			<!--<div ref="top" />-->
 			<topLogo2/>
-			
+
 			<div class="shadowSpace123" />
 
-			
+
 			<!--<video v-if="productDetailObject.materielType" :src='productDetailObject.imgs' class="banner" />-->
 			<video  v-if="productDetailObject.materielType" id="myvideo" :src="productDetailObject.imgs" :muted="muteStatus" controls>
 
@@ -140,7 +140,7 @@
 <script>
 	import bottomBanner from './product/bottomBanner.vue'
 	import topLogo2 from './design/topLogo2'
-	
+
 	import {
 		imageUrls,
 		baseUrl
@@ -266,7 +266,7 @@
 		width: 750px;
 		height: 1112px;
 	}
-	
+
 	.x-wrapper {
 		display: flex;
 		flex-direction: column;
@@ -274,7 +274,7 @@
 		width: 750px;
 		height: 1350px;
 	}
-	
+
 	.indicator {
 		width: 750px;
 		height: 586px;
@@ -287,7 +287,7 @@
 		item-size: 12px;
 		position: absolute;
 	}
-	
+
 	.like-wrapper {
 		width: 122px;
 		height: 118px;
@@ -296,17 +296,17 @@
 		justify-content: center;
 		align-items: center;
 	}
-	
+
 	.like-number {
 		font-size: 28px;
 		color: #666666;
 	}
-	
+
 	.banner {
 		width: 750px;
 		height: 586px;
 	}
-	
+
 	.detail-title-container {
 		display: flex;
 		flex-direction: row;
@@ -315,112 +315,112 @@
 		justify-content: space-between;
 		align-items: center;
 	}
-	
+
 	.detail-info-left {
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
 		margin-left: 20px;
 	}
-	
+
 	.info-title {
 		font-size: 44px;
 		color: #333333;
 		font-weight: bold;
 	}
-	
+
 	.info-time {
 		font-size: 26px;
 		color: #999999;
 		margin-top: 50px;
 	}
-	
+
 	.detail-describe {
 		display: flex;
 		flex-direction: column;
 		margin-left: 34px;
 	}
-	
+
 	.detail-title {
 		font-size: 26px;
 		color: #333333;
 	}
-	
+
 	.shadowSpace111 {
 		background-color: #f6f6f6;
 		width: 750px;
 		height: 100px;
 	}
-	
+
 	.detail-info-container {
 		border-top: 1px solid #F6F6F6;
 		border-bottom: 1px solid #F6F6F6;
 	}
-	
+
 	.shadowSpaceSolid {
 		background-color: #f6f6f6;
 		width: 750px;
 		height: 2px;
 	}
-	
+
 	.detail-level {
 		margin-top: 18px;
 		font-size: 26px;
 		color: #666666;
 	}
-	
+
 	.detail-title-image {
 		width: 68px;
 		height: 68px;
 	}
-	
+
 	.detail-left-container {
 		display: flex;
 		flex-direction: row;
 		margin-left: 20px;
 	}
-	
+
 	.detail-info-right {
 		display: flex;
 		flex-direction: row;
 		align-items: flex-end;
 		margin-bottom: 40px;
 	}
-	
+
 	.preview-container {
 		display: flex;
 		flex-direction: row;
 		margin-right: 30px;
 	}
-	
+
 	.praise-container {
 		display: flex;
 		flex-direction: row;
 		margin-right: 20px
 	}
-	
+
 	.preview-image {
 		width: 36px;
 		height: 26px;
 		margin-right: 12px;
 	}
-	
+
 	.preview-text {
 		font-size: 26px;
 		color: #999999;
 	}
-	
+
 	.praise-text {
 		font-size: 26px;
 		color: #999999;
 	}
-	
+
 	.praise-image {
 		width: 28px;
 		height: 28px;
 		margin-right: 12px;
 	}
-	
+
 	.background-idea-container {
 		display: flex;
 		flex-direction: column;
@@ -428,7 +428,7 @@
 		border-top-color: #eeeeee;
 		margin-bottom: 60px;
 	}
-	
+
 	.background-idea-title {
 		display: flex;
 		flex-direction: row;
@@ -436,45 +436,45 @@
 		margin-top: 60px;
 		align-items: flex-end;
 	}
-	
+
 	.background-image {
 		width: 36px;
 		height: 46px;
 	}
-	
+
 	.background-text {
 		margin-left: 32px;
 		font-size: 32px;
 		color: #333333;
 		font-weight: bold;
 	}
-	
+
 	.background-describe {
 		display: flex;
 		flex-direction: column;
 		margin-left: 20px;
 		margin-right: 20px;
 	}
-	
+
 	.describe-text {
 		line-height: 46px;
 		font-size: 30px;
 		color: #666666;
 		margin-top: 52px;
 	}
-	
+
 	.idea-image {
 		width: 43px;
 		height: 46px;
 	}
-	
+
 	.idea-text {
 		margin-left: 26px;
 		font-size: 32px;
 		color: #333333;
 		font-weight: bold;
 	}
-	
+
 	.detail-info-container {
 		display: flex;
 		flex-direction: row;
@@ -483,14 +483,14 @@
 		border-top-color: #eeeeee;
 		height: 208px;
 	}
-	
+
 	.footer {
 		display: flex;
 		flex-direction: row;
 		height: 98px;
 		width: 750px;
 	}
-	
+
 	.footer-left {
 		display: flex;
 		flex-direction: row;
@@ -499,13 +499,13 @@
 		align-items: center;
 		background-color: white;
 	}
-	
+
 	.footer-like {
 		width: 46px;
 		height: 42px;
 		margin-left: 30px;
 	}
-	
+
 	.footer-right {
 		display: flex;
 		flex-direction: row;
@@ -515,36 +515,36 @@
 		justify-content: center;
 		align-items: center;
 	}
-	
+
 	.footer-left-text-like {
 		color: #666666;
 		font-size: 32px;
 		margin-left: 178px;
 	}
-	
+
 	.footer-left-text {
 		color: #999999;
 		font-size: 32px;
 		margin-left: 178px;
 	}
-	
+
 	.footer-right-text {
 		font-size: 32px;
 		color: #ffffff;
 	}
-	
+
 	.shadowSpace {
 		background-color: #f6f6f6;
 		width: 750px;
 		height: 20px;
 	}
-	
+
 	.shadowSpace123 {
 		background-color: #f6f6f6;
 		width: 750px;
-		height: 100px;
+		height: 80px;
 	}
-	
+
 	.custom-service-title {
 		display: flex;
 		height: 98px;
@@ -553,48 +553,48 @@
 		align-items: center;
 		background-color: #f6f6f6;
 	}
-	
+
 	.custom-service-image {
 		width: 44px;
 		height: 38px;
 	}
-	
+
 	.custom-service-text {
 		margin-left: 18px;
 		font-size: 32px;
 		color: #333333;
 		font-weight: bold;
 	}
-	
+
 	.great-case-describe {
 		display: flex;
 		flex-direction: column;
 		margin-top: 30px;
 	}
-	
+
 	.great-case-img-container {
 		display: flex;
 		flex-direction: row;
 		justify-content: space-between;
 	}
-	
+
 	.great-case-img {
 		width: 364px;
 		height: 322px;
 	}
-	
+
 	.great-case-img-full {
 		width: 750px;
 		height: 322px;
 	}
-	
+
 	.great-case-title-text {
 		color: #333333;
 		font-size: 28px;
 		margin-top: 40px;
 		margin-left: 20px;
 	}
-	
+
 	.great-case-detail-text {
 		color: #666666;
 		font-size: 28px;
@@ -602,7 +602,7 @@
 		margin-left: 20px;
 		margin-right: 46px;
 	}
-	
+
 	.case-title-container {
 		display: flex;
 		flex-direction: row;
@@ -611,14 +611,14 @@
 		border-bottom-width: 1px;
 		border-bottom-color: #eeeeee;
 	}
-	
+
 	.case-title {
 		margin-left: 20px;
 		font-size: 32px;
 		color: #333333;
 		font-weight: bold;
 	}
-	
+
 	.like-container {
 		display: flex;
 		flex-direction: row;
@@ -626,25 +626,25 @@
 		margin-right: 20px;
 		margin-bottom: 36px;
 	}
-	
+
 	.like {
 		width: 42px;
 		height: 38px;
 	}
-	
+
 	.col-line {
 		width: 710px;
 		margin-left: 20px;
 		border-width: 1px;
 		border-color: #eeeeee;
 	}
-	
+
 	.loading {
 		margin-left: 300px;
 		width: 62px;
 		height: 84px;
 	}
-	
+
 	.loading-container {
 		height: 100px;
 		background-color: #f6f6f6;
@@ -653,13 +653,13 @@
 		flex-direction: row;
 		align-items: flex-end;
 	}
-	
+
 	.loading-text {
 		font-size: 22px;
 		color: #999999;
 		margin-bottom: 10px;
 	}
-	
+
 	.mask {
 		height: 1100px;
 		width: 750px;

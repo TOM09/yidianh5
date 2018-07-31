@@ -1,5 +1,5 @@
 <template>
-	<div> 
+	<div>
 		  <div class="title-container">
 		    <img class="title-image" :src="blueNav" />
 
@@ -8,21 +8,21 @@
 		  <div class="type-container">
 		    <div class="sub-type-container" v-for="(item, index) in typeGroupList">
 		      <div v-if="index < 10" class="service">
-		        <img class="image" :src="item.data.icon""  @click="handleClickBrandDesigner(item)"/>   
+		        <img class="image" :src="item.data.icon""  @click="handleClickBrandDesigner(item)"/>
 		        <!--@click="handleClickBrandDesigner(item)-->
 		        <span class="text">{{item.data.name}}</span>
 		      </div>
 		      <div v-if="(index + 1) % 5 != 0 && index < 10" class="placeholder" />
 		    </div>
 		  </div>
-	
+
 	    <div class="shadowSpace" />
-	    
-	    <vueswiper/>
-		  
+
+	    <img src="./banner1.png" class="banner1">
+
 		  <div class="shadowSpace" />
-	
-	
+
+
 	<div v-for="(item, index) in resultList">
 	    <div v-if="index % 2 === 0" class="title-container">
 	      <img class="title-image" :src="blueNav" />
@@ -41,10 +41,10 @@
 	          <img class="great-case-img" :src="item.cover.split(',')[1]" />
 	        </div>
 	      </div>
-	      
 
-	      
-	      
+
+
+
 	      <div v-if="item.style === '样式B'">
 	        <div v-if="index % 2 === 0" class="great-case-img-container">
 	          <img class="great-case-img-full" :src="item.cover" />
@@ -55,27 +55,27 @@
 	      </div>
 	      <span class="great-case-title-text">{{item.name}}</span>
 	      <span class="great-case-detail-text">{{item.detailKey1}}：{{item.detailVal1.length > 33 ? (item.detailVal1.substring(0, 33) + '...') : item.detailVal1}}</span>
-	      
+
 	    </div>
-	    
-				    
+
+
 	    <div class="shadowSpace2" />
-	    
+
 	    <div v-if="index % 2 === 0" class="col-line" />
 	    <div v-else class="shadowSpace" />
 	  </div>
-	
-	
-	
-	
+
+
+
+
 	 <div class="custom-service-container">
 	    <div class="custom-service-title">
 	      <!--<img class="custom-service-image" :src="customService" />-->
 	      <span class="custom-service-text">--------------|联系我们|--------------</span>
 	    </div>
-	
+
 	    <div class="shadowSpace2" />
-	
+
 	    <div class="custom-service-describe">
 	      <div class="sub-custom-service-describe">
 	        <div class="custom-service-detail">
@@ -138,7 +138,7 @@ export default {
     	method: 'get'
   		}).then((response)=>{
 		        return response.json()
-		  }).then((response)=>{  	
+		  }).then((response)=>{
             for (var item of response.data) {
               this.groupListMap[item.data.id] = item.data.name
             }
@@ -150,8 +150,8 @@ export default {
               if (indexA.data.sort === indexB.data.sort) return indexA.data.createDate > indexB.data.createDate ? 1 : -1
               if (indexA.data.sort > indexB.data.sort) return 1
               return -1
-            })           
-            
+            })
+
           response.data.forEach((value, index) => {
             this.productGroup[value.data.id] = value.data.name
             this.productGroupSort[value.data.id] = value.data.sort
@@ -165,17 +165,17 @@ export default {
       this.axios.all([this.getInfo().productMasterpiece,this.getInfo().productOne, this.getInfo().productTwo,this.getInfo().productThree])
 				.then(this.axios.spread((acct, perms, res) => {
             this.masterList = []
-            acct.data.data.forEach((item, index) => {  
+            acct.data.data.forEach((item, index) => {
               this.masterList.push(item)
           if (this.masterList.length === acct.data.data.length) {
                 this.initData()
               }
             })
-          
+
 				}));
   },
   methods: {
-  	
+
     getInfo() {
 		let obj = {
 	        productMasterpiece: this.axios.get(this.baseUrl+'/masterpiece'),
@@ -186,12 +186,12 @@ export default {
 			return obj
 		},
 //		handleClickBrandDesigner: function(item) {
-//		      NetworkUtil.streamRequest(this.baseUrl + '/product-type',{ 
+//		      NetworkUtil.streamRequest(this.baseUrl + '/product-type',{
 //		      	method: 'GET',
 //		        type: 'json',
 //		      }).then(response => {
 //		      	return response.json()
-//		      	
+//
 //		      }).then(response => {
 //		      	 this.typeList = response.filter((val) => {
 //		          return !val.delFlag && val.status && item.data.id === val.groupid
@@ -216,11 +216,11 @@ export default {
 //			      }
 //				window.localStorage.setItem(datas)
 //		      })
-//		       
+//
 //		    },
 	handleClickBrandDesigner: function(item) {
 		console.log(item.data)
-		
+
 		var itemData = item.data
 		this.axios.get(this.baseUrl+'/product-type').then((res)=>{
 			const resDatas = res.data.data
@@ -232,15 +232,15 @@ export default {
 	          if (indexA.sort > indexB.sort) return 1
 	          return -1
 	        })
-			
-			
+
+
 			var groupListMap = this.groupListMap
 			var typeList = this.typeList
 			var itemDatass = itemData
 			window.localStorage.setItem('productGroupData',JSON.stringify(itemDatass));
 			window.localStorage.setItem('productData',JSON.stringify(typeList));
 			window.localStorage.setItem('groupListMap',JSON.stringify(groupListMap));
-			
+
 			var id = itemData.id
 //			this.$router.push({
 //	          name: 'design',
@@ -262,9 +262,9 @@ export default {
 	          	  groupListMap: this.groupListMap
 	          }
 	        })
-		
+
 			const cacheName = this.typeListCacheName
-	
+
 			let result = {
 	            data: resDatas,
 	            expiration: new Date().getTime() + 1800000
@@ -272,12 +272,12 @@ export default {
 			var resd = JSON.stringify(result)
 			window.localStorage.setItem(cacheName,resd)
 
-	
+
 		}).catch((res)=>{
 			console.log(res)
 		})
 		},
-			
+
 //			window.localStorage.getItem(cacheName)
 //			setTimeout(function() {
 //		        fetch(this.baseUrl+'/product-type').then(r => r.json())
@@ -294,11 +294,11 @@ export default {
 ////		          if (res) successCallback(data.data.data);
 //		        })
 //		      }, 600);
-      
-      
-//		window.localStorage.setItem(cacheName, JSON.stringify(result));	
-		
-    
+
+
+//		window.localStorage.setItem(cacheName, JSON.stringify(result));
+
+
     initData: function() {
     	//如果三个true
       // if (this.masterRenderFlag && this.groupRenderFlag && this.likeRenderFlag) {
@@ -343,10 +343,10 @@ export default {
 //	        	}
 // 		}).then((res)=>{
 // 			console.log(res)
-// 			
+//
 // 		})
-   		
-   		
+
+
 	    	this.axios.get(this.baseUrl + '/masterpiece?id=' + item.id).then((res)=>{
 
 
@@ -356,7 +356,7 @@ export default {
 		              caseObject: res.data.data[0],
 		              groupListMap: this.groupListMap
 		            }
-	    			
+
 	    		})
 	    	})
       }
@@ -364,7 +364,7 @@ export default {
    components:{
     'vueswiper':vueswiper
   }
-  
+
 
 //methods: {
 //  handleClickBrandDesigner: function(item) {
@@ -640,4 +640,9 @@ export default {
   font-size: 20px;
   color: #999999;
 }
+
+  /*20180730  xinjianan*/
+  .banner1{
+    width: 100%;
+  }
 </style>

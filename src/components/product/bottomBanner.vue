@@ -1,6 +1,6 @@
 
 <template>
-  <div class="toplogo" @click="gogogo">
+  <div class="toplogo" @click="gogogo()">
 			立即咨询
   </div>
 </template>

@@ -6,39 +6,39 @@
 
 <template>
 <div class="'wrapper">
-	<topLogo :urlname = "productTypeData.name"/>	
+	<topLogo :urlname = "productTypeData.name"/>
     <div class="shadowSpace123" />
 
     <div class="shadowSpace" />
-    
+
     <div class="banner" interval="4000" auto-play="true">
       <img v-for="item in productTypeData.banners.split(',')" :src="item" />
       <!--<indicator class="indicator" />-->
     </div>
-    
+
     <div class="shadowSpace" />
-    
+
     <div>
       <div v-if="productTypeData.name != ''" class="title">
         <div class="title-left-container">
           <img class="nav" :src="brandNav" />
           <span class="product-text">  {{productTypeData.name}}</span>
         </div>
-        
+
         <div v-if="productTypeData.subTitle" class="title-right-container" @click="handleClickVIDetail">
           <span class="title-right">整套VI设计列表参考</span>
           <img class="right-image" :src="rightArrow" />
         </div>
       </div>
-      
+
       <div v-for="item in designerList">
         <designer :designerObject="item" :productTypeData="productTypeData" :discountList="discountList" />
       </div>
     </div>
-    
-    
+
+
     <div class="shadowSpace" />
-    
+
  	<div>
       <process v-if="productTypeData.flowId === 'design_flow'" type="design" />
       <process v-else-if="productTypeData.flowId === 'video_flow'" type="video" />
@@ -47,10 +47,10 @@
     </div>
 
     <refundsRule :refundsRule="productTypeData.refundsRule" />
-    
+
     <bottomBanner/>
     <div class="shadowSpace111" />
-    
+
 </div>
 </template>
 <script>
@@ -91,8 +91,8 @@ export default {
 	    }
   },
   created: function() {
-  	
-  	 
+
+
   this.axios.all([this.getInfo().productMasterpiece,this.getInfo().productOne, this.getInfo().productTwo,this.getInfo().productThree])
 				.then(this.axios.spread((acct, perms, res) => {
 					var acctData = acct.data.data;
@@ -106,7 +106,7 @@ export default {
 			        })
 			      }
 
-			     
+
 			     var response = perms.data.data
 			     this.designerList = response.filter((val) => {
 			        return !val.delFlag && val.detailid === this.productTypeData.detailId
@@ -115,7 +115,7 @@ export default {
 			        if (indexA.grade > indexB.grade) return 1
 			        return -1
 			      })
-   
+
     }))
 },
   methods:{
@@ -129,13 +129,13 @@ export default {
 			return obj
 		}
   }
-  
-  
-  
- 
-	
+
+
+
+
+
 	}
-	
+
 </script>
 <style scoped>
 	.wrapper {
@@ -218,7 +218,7 @@ export default {
 .shadowSpace123 {
   background-color: #f6f6f6;
   width: 750px;
-  height: 100px;
+  height: 80px;
 }
 .shadowSpace111 {
   background-color: #f6f6f6;

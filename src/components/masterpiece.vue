@@ -2,7 +2,7 @@
 
 <template>
 	<div>
-		
+
 		<topLogo3/>
 		<div class="shadowSpace123" />
 		<div>
@@ -41,9 +41,9 @@
 					<span class="describe-text">{{item}}</span>
 				</div>
 			</div>
-			
-			
-			
+
+
+
 			<div class="image-container" v-for="(item, index) in caseObject.imgs.split(',')">
 				<!-- <image class="projection" :src="projection" /> -->
 				<img class="image-top" :src="item" />
@@ -54,15 +54,15 @@
 				<img class="custom-service-image" v-if="greatCaseList.length !== 0" :src="customService" />
 				<span class="custom-service-text">精品展示</span>
 			</div>
-			
+
 			<div class="case-title-container" v-if="greatCaseList.length !== 0">
 				<span class="case-title">{{groupListMap[caseObject.productGroup]}}作品示例</span>
 			</div>
 				<div class="shadowSpace3334" />
-			
+
 			<div v-for="(item, index) in greatCaseList">
 				<div class="great-case-describe">
-				
+
 					<div v-if="item.style === '样式A'">
 						<div class='great-case-img-container' :style="{ 'margin-top': '14px' }">
 							<img class="great-case-img" :src="item.cover.split(',')[0]" />
@@ -74,13 +74,13 @@
 							<img class="great-case-img-full" :src="item.cover" />
 						</div>
 					</div>
-				
+
 				<span class="great-case-title-text">{{item.name}}</span>
 				<span class="great-case-detail-text">{{item.detailKey1}}：{{item.detailVal1.length > 33 ? (item.detailVal1.substring(0, 33) + '...') : item.detailVal1}}</span>
 				<div class="shadowSpace333" />
 				</div>
 			</div>
-<!--			
+<!--
 			<div v-for="(item, index) in greatCaseList">
 				<div class="great-case-describe">
 					<div v-if="item.style === '样式A'">
@@ -107,7 +107,7 @@
 			<div class="shadowSpace" />
 			<bottombanner></bottombanner>
 			<div class="shadowSpace123" />
-			
+
 		</div>
 
 	</div>
@@ -118,13 +118,13 @@ import {
 		baseUrl,
 		cacheName
 	} from '../lib/constants'
-	
+
 import {
   RandomUtil
 } from '../lib/util'
 
 import topLogo3 from './design/topLogo3'
-import bottombanner from './product/bottombanner'
+import bottombanner from './product/bottomBanner'
 
 
 	export default {
@@ -164,35 +164,35 @@ import bottombanner from './product/bottombanner'
 
 		methods: {
 			getList(){
-				
+
 				this.axios.get(this.baseUrl + '/product-type').then((response)=>{
 					console.log(response)
 		    			response.data.data.forEach(item => {
 						if(item.id === this.caseObject.productType){
 							this.productTypeData = item
-						} 
+						}
 						this.typeNameMap[item.id] = item.name
 						this.typeIconMap[item.id] = item.img
 					})
 		    	})
-				
-				
-				
-				
+
+
+
+
 				this.axios.get(this.baseUrl + '/masterpiece?productGroupId=' + this.caseObject.productGroup).then((response)=>{
 		    		console.log(response.data.data)
-					
+
 					this.greatCaseList = response.data.data.filter((val) => {
 						return !val.delFlag && val.status && val.id !== this.caseObject.id
 					})
 					this.greatCaseList = RandomUtil.getArray(this.greatCaseList, 4)
-					
-					
-					
-					
+
+
+
+
 //					const cacheName = this.caseObject.productGroup + '_masterpiece',
 //					var info = window.localStorage.getItem(cacheName)
-						
+
 					var datas = function(info) {
 				      if (info) {
 				        info = JSON.parse(info);
@@ -203,7 +203,7 @@ import bottombanner from './product/bottombanner'
 				      }
 				      setTimeout(function() {
 				        this.axios.get(this.baseUrl + '/product-type').then((data)=>{
-				        	
+
 				          let result = {
 				            data: data.data,
 				            expiration: new Date().getTime() + 1800000
@@ -213,7 +213,7 @@ import bottombanner from './product/bottombanner'
 				        });
 				      }, 600);
 				    }
-		
+
 		    	})
 
 			}
@@ -238,107 +238,107 @@ import bottombanner from './product/bottombanner'
 		border-top-width: 1px;
 		border-top-color: #eeeeee;
 	}
-	
+
 	.detail-info-left {
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
 		margin-left: 20px;
 	}
-	
+
 	.shadowSpace123 {
 		background-color: #f6f6f6;
 		width: 750px;
 		height: 100px;
 	}
-	
+
 	.info-title {
 		font-size: 44px;
 		color: #333333;
 		font-weight: bold;
 	}
-	
+
 	.like-number {
 		font-size: 28px;
 		color: #666666;
 	}
-	
+
 	.info-time {
 		font-size: 26px;
 		color: #999999;
 		margin-top: 50px;
 	}
-	
+
 	.detail-describe {
 		display: flex;
 		flex-direction: column;
 		margin-left: 34px;
 	}
-	
+
 	.detail-title {
 		font-size: 26px;
 		color: #333333;
 	}
-	
+
 	.detail-level {
 		margin-top: 18px;
 		font-size: 26px;
 		color: #999999;
 	}
-	
+
 	.detail-title-image {
 		width: 68px;
 		height: 68px;
 	}
-	
+
 	.detail-left-container {
 		display: flex;
 		flex-direction: row;
 		align-items: center;
 		margin-left: 20px;
 	}
-	
+
 	.detail-info-right {
 		display: flex;
 		flex-direction: row;
 		align-items: flex-end;
 		margin-bottom: 40px;
 	}
-	
+
 	.preview-container {
 		display: flex;
 		flex-direction: row;
 		margin-right: 30px;
 	}
-	
+
 	.praise-container {
 		display: flex;
 		flex-direction: row;
 		margin-right: 20px
 	}
-	
+
 	.preview-image {
 		width: 36px;
 		height: 26px;
 		margin-right: 12px;
 	}
-	
+
 	.preview-text {
 		font-size: 26px;
 		color: #999999;
 	}
-	
+
 	.praise-text {
 		font-size: 26px;
 		color: #999999;
 	}
-	
+
 	.praise-image {
 		width: 28px;
 		height: 28px;
 		margin-right: 12px;
 	}
-	
+
 	.background-idea-container {
 		display: flex;
 		flex-direction: column;
@@ -346,7 +346,7 @@ import bottombanner from './product/bottombanner'
 		border-top-color: #eeeeee;
 		margin-bottom: 60px;
 	}
-	
+
 	.background-idea-title {
 		display: flex;
 		flex-direction: row;
@@ -354,45 +354,45 @@ import bottombanner from './product/bottombanner'
 		margin-top: 60px;
 		align-items: flex-end;
 	}
-	
+
 	.background-image {
 		width: 36px;
 		height: 46px;
 	}
-	
+
 	.background-text {
 		margin-left: 32px;
 		font-size: 32px;
 		color: #333333;
 		font-weight: bold;
 	}
-	
+
 	.background-describe {
 		display: flex;
 		flex-direction: column;
 		margin-left: 20px;
 		margin-right: 20px;
 	}
-	
+
 	.describe-text {
 		line-height: 46px;
 		font-size: 30px;
 		color: #666666;
 		margin-top: 52px;
 	}
-	
+
 	.idea-image {
 		width: 43px;
 		height: 46px;
 	}
-	
+
 	.idea-text {
 		margin-left: 26px;
 		font-size: 32px;
 		color: #333333;
 		font-weight: bold;
 	}
-	
+
 	.detail-info-container {
 		display: flex;
 		flex-direction: row;
@@ -401,14 +401,14 @@ import bottombanner from './product/bottombanner'
 		border-top-color: #eeeeee;
 		height: 208px;
 	}
-	
+
 	.footer {
 		display: flex;
 		flex-direction: row;
 		height: 98px;
 		width: 750px;
 	}
-	
+
 	.footer-left {
 		display: flex;
 		flex-direction: row;
@@ -417,13 +417,13 @@ import bottombanner from './product/bottombanner'
 		align-items: center;
 		background-color: white;
 	}
-	
+
 	.footer-like {
 		width: 46px;
 		height: 42px;
 		margin-left: 30px;
 	}
-	
+
 	.footer-right {
 		display: flex;
 		flex-direction: row;
@@ -433,63 +433,63 @@ import bottombanner from './product/bottombanner'
 		justify-content: center;
 		align-items: center;
 	}
-	
+
 	.footer-left-text-like {
 		color: #666666;
 		font-size: 32px;
 		margin-left: 178px;
 	}
-	
+
 	.footer-left-text {
 		color: #999999;
 		font-size: 32px;
 		margin-left: 178px;
 	}
-	
+
 	.footer-right-text {
 		font-size: 32px;
 		color: #ffffff;
 	}
-	
+
 	.projection {
 		width: 750px;
 		height: 454px;
 	}
-	
+
 	.image-container {
 		display: flex;
 		flex-flow: column;
 	}
-	
+
 	.image-top {
 		width: 750px;
 		height: 474px;
 	}
-	
+
 	.image-bottom {
 		width: 750px;
 		height: 438px;
 	}
-	
+
 	.shadowSpace333 {
 		background-color: #f6f6f6;
 		margin-top: 30px;
 		width: 750px;
 		height: 2px;
 	}
-	
+
 	.shadowSpace3334 {
 		background-color: #f6f6f6;
 		width: 750px;
 		height: 2px;
 	}
-	
+
 	.shadowSpace {
 		background-color: #f6f6f6;
 		width: 750px;
 		height: 20px;
 	}
-	
+
 	.custom-service-title {
 		display: flex;
 		height: 98px;
@@ -499,48 +499,48 @@ import bottombanner from './product/bottombanner'
 		background-color: #f6f6f6;
 		margin-top: 60px;
 	}
-	
+
 	.custom-service-image {
 		width: 44px;
 		height: 38px;
 	}
-	
+
 	.custom-service-text {
 		margin-left: 18px;
 		font-size: 32px;
 		color: #333333;
 		font-weight: bold;
 	}
-	
+
 	.great-case-describe {
 		display: flex;
 		flex-direction: column;
 		margin-top: 30px;
 	}
-	
+
 	.great-case-img-container {
 		display: flex;
 		flex-direction: row;
 		justify-content: space-between;
 	}
-	
+
 	.great-case-img {
 		width: 364px;
 		height: 322px;
 	}
-	
+
 	.great-case-img-full {
 		width: 750px;
 		height: 322px;
 	}
-	
+
 	.great-case-title-text {
 		color: #333333;
 		font-size: 28px;
 		margin-top: 40px;
 		margin-left: 20px;
 	}
-	
+
 	.great-case-detail-text {
 		color: #666666;
 		font-size: 28px;
@@ -548,7 +548,7 @@ import bottombanner from './product/bottombanner'
 		margin-left: 20px;
 		margin-right: 46px;
 	}
-	
+
 	.case-title-container {
 		display: flex;
 		flex-direction: row;
@@ -557,14 +557,14 @@ import bottombanner from './product/bottombanner'
 		border-bottom-width: 1px;
 		border-bottom-color: #eeeeee;
 	}
-	
+
 	.case-title {
 		margin-left: 20px;
 		font-size: 32px;
 		color: #333333;
 		font-weight: bold;
 	}
-	
+
 	.like-container {
 		display: flex;
 		flex-direction: row;
@@ -572,7 +572,7 @@ import bottombanner from './product/bottombanner'
 		margin-right: 20px;
 		margin-bottom: 36px;
 	}
-	
+
 	.like-wrapper {
 		width: 122px;
 		height: 118px;
@@ -581,25 +581,25 @@ import bottombanner from './product/bottombanner'
 		justify-content: center;
 		align-items: center;
 	}
-	
+
 	.like {
 		width: 42px;
 		height: 38px;
 	}
-	
+
 	.col-line {
 		width: 710px;
 		margin-left: 20px;
 		border-width: 1px;
 		border-color: #eeeeee;
 	}
-	
+
 	.loading {
 		margin-left: 300px;
 		width: 62px;
 		height: 84px;
 	}
-	
+
 	.loading-container {
 		height: 100px;
 		background-color: #f6f6f6;
@@ -608,13 +608,13 @@ import bottombanner from './product/bottombanner'
 		flex-direction: row;
 		align-items: flex-end;
 	}
-	
+
 	.loading-text {
 		font-size: 22px;
 		color: #999999;
 		margin-bottom: 10px;
 	}
-	
+
 	.mask {
 		height: 1100px;
 		width: 750px;

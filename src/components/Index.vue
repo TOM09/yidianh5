@@ -1,10 +1,10 @@
 <template>
   <div class="wrapper">
     <topLogo/>
-    
-    
+
+
     <div class="banner" style="{ background: url(../../build/logo.png)}">
-      <img :src="bannerOne"/>
+      <img src="./index/banner.jpg"/>
     </div>
     <div class="space" />
   	<listIcon/>
@@ -38,7 +38,7 @@ export default {
     	isLoadingDone: true,
       bannerOne: imageUrls.banner.bannerOne,
 			 blueNav: imageUrls.navigation.blueNav
-			 //滑动配置[obj]    
+			 //滑动配置[obj]
     }
   },
 
@@ -60,38 +60,38 @@ export default {
 //        }
 //    })
     })
-//		
-//		
 //
-//		
-//		
+//
+//
+//
+//
 //		fetch('http://qcbang.hz.taeapp.com' + '/product-type-group',{
 ////			this.baseUrl
 //  	method: 'get'
-//	}).then((response)=>{	
+//	}).then((response)=>{
 //	        return response.json()
 //		  }).then((response)=>{
 //      for (const item of response.data) {
 //        this.groupListMap[item.data.id] = item.data.name
-//        
+//
 //      }
 //       response.data.forEach((value, index) => {
 //	        this.productGroup[value.data.id] = value.data.name
-//	        
+//
 //	        this.productGroupSort[value.data.id] = value.data.sort
-//	        
+//
 //	        this.groupShowIndex[value.data.id] = value.data.caseIndex
 //
 //	        this.productGroupShow[value.data.id] = 0
-//	        
+//
 //    })
 //       this.groupRenderFlag = true
 //    this.initData()
 //        })
 	},
-  
-  
-  
+
+
+
   methods:{
   	initData: function() {
   		fetch(this.baseUrl + '/masterpiece',{
@@ -117,7 +117,7 @@ export default {
             }
           }
         })
-        
+
         list.sort((a, b) => {
           if (a.groupSort === b.groupSort) {
             if (a.indexShow === b.indexShow) {
@@ -128,7 +128,7 @@ export default {
           }
           return a.groupSort - b.groupSort
         })
-        
+
         this.resultList = []
         list.forEach(caseValue => {
           if (this.productGroupShow[caseValue.productGroup] < 2) {
@@ -165,13 +165,16 @@ export default {
   	background-size:cover;
 	background-color: #22C3AA
 }
- 
+
 .banner{
-  padding-top: 60px; 
+  padding-top: 80px;
   width: 100%;
-  height: 340px;
-  margin-bottom: 30px;
+  /*height: 340px;*/
+  /*margin-bottom: 30px;*/
   /*overflow: hidden;*/
+}
+.banner img{
+  width: 100%;
 }
 .shadowSpace {
   background-color: #f6f6f6;
@@ -180,7 +183,7 @@ export default {
 }
 
 #app {
- 
+
 }
 
 .solidOne{

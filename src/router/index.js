@@ -14,7 +14,7 @@ Vue.prototype.axios= axios
 
 export default new Router({
 	mode:'history',
-	base: '/h5/',
+	// base: '/h5/',
      routes:[
        {
          path: '/',

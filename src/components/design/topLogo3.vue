@@ -1,16 +1,16 @@
 
 <template>
   <div class="toplogo">
-	<li class="fontleft"   @click="handleClickBrandDesigner">
-		<i class="backindex"><</i>
+	<li class="fontleft" @click="handleClickBrandDesigner">
+		<i class="backindex"><img src="./back.png"></i>
 		<!--<i class="Asolid">返回</i>-->
 	</li>
 	<span class="shadowSpaceTop">
 		精品案例
 	</span>
-	<li class="imglogo">
-		<img src="../../lib/favicon.png">
-	</li>
+	<!--<li class="imglogo">-->
+		<!--<img src="../../lib/favicon.png">-->
+	<!--</li>-->
   </div>
 </template>
 
@@ -43,6 +43,7 @@ li{
 	width: 120px;
 	height: 100%;
 	font-size: 50px;
+  z-index: 1;
 	}
 	.backindex{
 		position: absolute;
@@ -63,8 +64,14 @@ li{
 .imglogo{
 	padding-right: 20px;
 }
-.shadowSpaceTop{
-	padding-left: 40px
+/*20180730  xinjianan*/
+.backindex img{
+  width: 20px;
+  height: 34px;
 }
-
+.shadowSpaceTop{
+  position: absolute;
+  width: 100%;
+  text-align: center;
+}
 </style>

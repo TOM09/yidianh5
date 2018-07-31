@@ -21,6 +21,7 @@
           <div class="row-start vertical-center float-left text-right">
             <span id="selStyle"></span>
             <img src="./consult_submit/Path.png" class="selStyle2"/>
+            <input type="hidden" id="inputHidden" name="project" value="">
           </div>
           <div class="clear"></div>
         </div>
@@ -34,12 +35,12 @@
 
       <div class="out-wrapper bottom-margin">
         <div class="in-wrapper bottom-border usual-wrapper">
-          <input type="text" class="usual-text input-phone" id="inputPhone" placeholder="+86  请输入您的电话号码">
+          <input type="text" name="phone" class="usual-text input-phone" id="inputPhone" placeholder="+86  请输入您的电话号码">
         </div>
       </div>
 
       <div class="sub-wrapper">
-        <div class="sub" @click="handleClickRefer">确认提交</div>
+        <div class="sub" :style="note" @click="handleClickRefer">确认提交</div>
       </div>
     </form>
 
@@ -55,7 +56,7 @@
         </div>
         <div class="in-wrapper-select1 bottom-border left-margin" v-for="(item, index) in defaultIndustry" @click="handleSelect(index)">
           <div class="gray-text float-left1 usual-text black-text">
-            <img :src="item.img"/>
+            <img :src="item.img" class="select-img"/>
             <span>{{item.name}}</span>
           </div>
           <div class="float-right1 select-wrapper">
@@ -65,7 +66,7 @@
         </div>
       </div>
       <div class="bottom-position" :show="true">
-        <div @click="handleConfirm" class="bottom-btn" :class="[isButtonShow ? 'abled-bg' : 'disabled-bg']">
+        <div @click="handleConfirm" class="bottom-btn" :class="[isButtonShow ? 'abled-bg' : 'disabled-bg']" :style="note">
           <div class="bottom-btn-text">确定</div>
         </div>
       </div>
@@ -83,53 +84,68 @@
   export default{
     data() {
       return {
+        selectNumber:0,
         selectName: null,
         isButtonShow: false,
         defaultIndustry: [{
           img: require('./consult_submit/icon1.png'),
           name: '平面设计',
-          checked: false
+          checked: false,
+          number: 1
         }, {
           img: require('./consult_submit/icon2.png'),
           name: '包装设计',
-          checked: false
+          checked: false,
+          number: 2
         }, {
           img: require('./consult_submit/icon3.png'),
           name: '网站/APP设计',
-          checked: false
+          checked: false,
+          number: 3
         }, {
           img: require('./consult_submit/icon4.png'),
           name: '网站建设',
-          checked: false
+          checked: false,
+          number: 4
         }, {
           img: require('./consult_submit/icon5.png'),
           name: '空间设计',
-          checked: false
+          checked: false,
+          number: 5
         }, {
           img: require('./consult_submit/icon6.png'),
           name: '品牌策划',
-          checked: false
+          checked: false,
+          number: 6
         }, {
           img: require('./consult_submit/icon7.png'),
           name: '商标注册',
-          checked: false
+          checked: false,
+          number: 7
         }, {
           img: require('./consult_submit/icon8.png'),
           name: '卡通形象设计',
-          checked: false
+          checked: false,
+          number: 8
         }, {
           img: require('./consult_submit/icon9.png'),
           name: '视频拍摄',
-          checked: false
+          checked: false,
+          number: 9
         }, {
           img: require('./consult_submit/icon10.png'),
           name: '景观规划',
-          checked: false
+          checked: false,
+          number: 10
         }, {
           img: require('./consult_submit/icon11.png'),
           name: '其他',
-          checked: false
-        }]
+          checked: false,
+          number: 11
+        }],
+        note:{
+          backgroundImage: "url(" + require("./consult_submit/subBg.png") + ")",
+        }
       }
     },
     methods: {
@@ -146,6 +162,7 @@
           if (index === cur) {
             value.checked = !value.checked
             this.selectName = value.checked ? value.name : null
+            this.selectNumber = value.checked ? value.number : 0
             this.isButtonShow = value.checked
           } else {
             value.checked = false
@@ -155,7 +172,9 @@
       handleConfirm(){
         if(this.isButtonShow){
           var selStyle = document.getElementById("selStyle");
+          var inputHidden = document.getElementById("inputHidden");
           selStyle.innerHTML = this.selectName;
+          inputHidden.value = this.selectNumber;
           this.selectHide();
         }else{
           this.selectShow();
@@ -170,13 +189,13 @@
           var tip = document.getElementById("tip");
           tip.style.display = "block";
         }else{
-          alert("提交成功")
           fetch('http://120.27.135.162/qcbang-rest/product-type-group').then(r =>
             r.json()
           ).then(res =>{
-            console.log(
-              1);
-            alert("提交成功")
+//            if(res.code == 100){
+//            alert(res.msg)
+//          }
+           alert("提交成功")
           })
         }
       },
@@ -190,6 +209,7 @@
 
 
 <style scoped>
+
   .clear{
     clear: both;
   }
@@ -265,17 +285,22 @@
   .text-right{
     text-align: right;
   }
-
+  .select-img{
+    width: 59px;
+    height: 59px;
+  }
   #selStyle{
     padding-right: 10px;
     font-size: 30px;
     color: #333333;
   }
-.selStyle2{
-	display: inline-block;
+  .selStyle2{
+    width: 16px;
+    height: 25px;
+	  display: inline-block;
     font-size: 30px;
   }
-  
+
   .input-phone{
     width: 100%;
     border: none;
@@ -296,7 +321,6 @@
     color: #ffffff;
     border-radius: 45px;
     border: none;
-    background-image: url(./consult_submit/subBg.png);
     background-repeat: no-repeat;
     background-size: 100%;
     -webkit-appearance: none;
@@ -355,14 +379,14 @@
     border-width: 2px;
     border-style: solid;
     border-color: #62c7fc;
-    border-radius: 16px;
+    border-radius: 32px;
     box-sizing: content-box;
   }
   .select-box {
     width: 20px;
     height: 20px;
     margin: 6px;
-    border-radius: 10px;
+    border-radius: 20px;
     background-color: #1098f7;
   }
   .gray-text {

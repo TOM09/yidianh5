@@ -20,10 +20,10 @@ export default {
 .toplogo{
   	position: fixed;
 	width: 750px;
-	height: 100px;
+	height: 80px;
 	background-color: #f6f6f6;
 	font-size: 36px;
-	line-height: 100px;
+	line-height: 80px;
 	display:flex;
 	display:-webkit-flex;
 	justify-content:center;
